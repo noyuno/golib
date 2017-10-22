@@ -1,4 +1,4 @@
-package lgo
+package strings
 
 // Index : 最初に現れる文字の位置を返す
 // s: 対象文字列

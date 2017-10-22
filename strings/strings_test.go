@@ -1,4 +1,4 @@
-package lgo
+package strings
 
 import "testing"
 
