@@ -9,6 +9,8 @@ func Index(s []rune, str []rune) int {
 			if p >= len(str) {
 				return i - len(str) + 1
 			}
+		} else {
+			p = 0
 		}
 	}
 	return -1

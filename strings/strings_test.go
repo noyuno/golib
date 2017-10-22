@@ -12,6 +12,6 @@ func tindex(t *testing.T, s string, str string, expected int) {
 func TestIndex(t *testing.T) {
 	tindex(t, "abcde", "d", 3)
 	tindex(t, "abcde", "o", -1)
-	tindex(t, "あいうえお", "お", 4)
-	tindex(t, "カキクケコ", "き", -1)
+	tindex(t, "あえいうえお", "えお", 4)
+	tindex(t, "カキクケキクケキクケコ", "キクケコ", 7)
 }
