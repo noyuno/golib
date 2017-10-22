@@ -2,7 +2,5 @@
 
 my Golang library
 
-## strings
-
-control `[]rune` strings
+- `strings`: control `[]rune` strings
 
