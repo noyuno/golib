@@ -2,7 +2,7 @@
 
 my Golang library
 
-## strings
+## runes
 
 control `[]rune` strings
 

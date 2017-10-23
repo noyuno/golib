@@ -1,4 +1,4 @@
-package strings
+package runes
 
 // Index : 最初に現れる文字の位置を返す
 // s: 対象文字列
@@ -99,4 +99,21 @@ func TrimSpace(s []rune) []rune {
 		}
 	}
 	return s[start : end+1]
+}
+
+// Join : 文字列の配列の各要素をsepで連結します
+// s : 連結する文字列の配列
+// sep : 各要素を結びつけるための記号的役割を担う文字列
+// return : 連結された文字列
+// なお，sepが空文字列であっても正しく動作する．
+func Join(s [][]rune, sep []rune) []rune {
+	var ret []rune
+	lens := len(s)
+	var i int
+	for i = 0; i < lens-1; i++ {
+		ret = append(ret, s[i]...)
+		ret = append(ret, sep...)
+	}
+	ret = append(ret, s[i]...)
+	return ret
 }

@@ -1,4 +1,4 @@
-package strings
+package runes
 
 import "testing"
 
@@ -43,4 +43,13 @@ func TestTrimSpace(t *testing.T) {
 	bt := "d e  	f"
 	tTrim(t, a, at)
 	tTrim(t, b, bt)
+}
+
+func TestJoin(t *testing.T) {
+	in := [][]rune{[]rune("abcde"), []rune("fghij")}
+	expected := []rune("abcde-fghij")
+	actual := Join(in, []rune("-"))
+	if !Compare(actual, expected) {
+		t.Errorf("Join(%s, -): want %s, but returned %s", in, string(expected), string(actual))
+	}
 }
