@@ -65,5 +65,38 @@ func Split(s []rune, sep []rune) [][]rune {
 // b: 比較文字列
 // return: trueならばaとbの文字列は一致している．falseならばaとbの文字列は一致しない．
 func Compare(a []rune, b []rune) bool {
-	return len(a) == len(b) && Index(a, b, 0) == 0
+	lena := len(a)
+	if lena != len(b) {
+		return false
+	}
+	for i := 0; i < lena; i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// TrimSpace : 前後の空白文字を削除して残った文字列を返す
+// s : 文字列
+// return: トリムした文字列．ただし，トリムした結果文字列が残らなかったときは空文字列を返す．
+// 空白文字とは，スペースおよびタブ文字をいう．
+func TrimSpace(s []rune) []rune {
+	lens := len(s)
+	start := 0
+	space := []rune(" ")[0]
+	tab := []rune("\t")[0]
+	spaceZenkaku := []rune("　")[0]
+	for ; start < lens; start++ {
+		if s[start] != space && s[start] != tab && s[start] != spaceZenkaku {
+			break
+		}
+	}
+	end := len(s) - 1
+	for ; end >= start; end-- {
+		if s[end] != space && s[end] != tab && s[end] != spaceZenkaku {
+			break
+		}
+	}
+	return s[start : end+1]
 }
