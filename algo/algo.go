@@ -16,14 +16,8 @@ func Permutations(a []int) [][]int {
 			for i := 0; i < n; i++ {
 				recurse(a, n-1)
 				if n%2 == 1 {
-					//t := a[i]
-					//a[i] = a[n-1]
-					//a[n-1] = t
 					a[i], a[n-1] = a[n-1], a[i]
 				} else {
-					//t := a[0]
-					//a[0] = a[n-1]
-					//a[n-1] = t
 					a[0], a[n-1] = a[n-1], a[0]
 				}
 			}
