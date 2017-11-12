@@ -27,11 +27,60 @@ func Permutations(a []int) [][]int {
 	return ret
 }
 
-// Revrse : 配列を逆順に並び替える
+// Reverse : 配列を逆順に並び替える
 // a : 配列（スライス）．変更される．
 func Reverse(a []int) {
 	lena := len(a)
 	for i, j := 0, lena-1; i < j; i, j = i+1, j-1 {
 		a[i], a[j] = a[j], a[i]
 	}
+}
+
+// Reverse : 配列を逆順に並び替えて，そのコピーを返す．
+// a : 配列（スライス）．変更されない
+// return : 逆順になった配列
+func ReverseCopy(a []int) []int {
+	lena := len(a)
+	ret := make([]int, lena)
+	for i, j := 0, lena-1; i < j; i, j = i+1, j-1 {
+		ret[i], ret[j] = a[j], a[i]
+	}
+	if lena%2 == 1 {
+		ret[(lena-1)/2] = a[(lena-1)/2]
+	}
+	return ret
+}
+
+// ValidateOrder : 順序が正しいかどうかテストする
+// a : テストする配列
+// v : 現れるべきでない部分パターンの集合
+// return : true : 正しい, false : 正しくない
+func ValidateOrder(a []int, v [][]int) bool {
+	e := make([]int, len(v))
+	for i := 0; i < len(a); i++ {
+		for p := 0; p < len(v); p++ {
+			if v[p][e[p]] == a[i] {
+				// step
+				e[p]++
+				if len(v[p]) <= e[p] {
+					// accepted by v[p]
+					return false
+				}
+			}
+		}
+	}
+	return true
+}
+
+// Contains : テストする値が配列中に含まれているかどうかテストする
+// s : 配列
+// t : 配列sに含まれていることを期待する値
+// return : true: 含まれている, false: 含まれていない
+func Contains(s []int, t int) bool {
+	for _, v := range s {
+		if t == v {
+			return true
+		}
+	}
+	return false
 }

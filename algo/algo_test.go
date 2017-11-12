@@ -56,3 +56,46 @@ func TestReverse(t *testing.T) {
 		}
 	}
 }
+
+func TestReverseCopy(t *testing.T) {
+	in := []int{1, 2, 3}
+	expected := []int{3, 2, 1}
+	out := ReverseCopy(in)
+	for i := range expected {
+		if expected[i] != out[i] {
+			t.Errorf("want [%v]=%v, but returned [%v]=%v", i, expected[i], i, out[i])
+		}
+	}
+}
+
+func TestContains(t *testing.T) {
+	in := []int{4, 9, -6}
+	testfalse := -16
+	testtrue := 9
+	if Contains(in, testfalse) == true {
+		t.Errorf("want false, but returned true")
+	}
+	if Contains(in, testtrue) == false {
+		t.Errorf("want true, but returned false")
+	}
+}
+
+func TestValidateOrder(t *testing.T) {
+	a := []int{3, 0, 1, 4, 2}
+	vf1 := [][]int{[]int{0, 2}}
+	vf2 := [][]int{[]int{4}}
+	vf3 := [][]int{[]int{3, 4}}
+	vt := [][]int{[]int{0, 3}, []int{4, 3}, []int{2, 0}, []int{1, 0}}
+	if ValidateOrder(a, vf1) == true {
+		t.Errorf("want false, but returned true")
+	}
+	if ValidateOrder(a, vf2) == true {
+		t.Errorf("want false, but returned true")
+	}
+	if ValidateOrder(a, vf3) == true {
+		t.Errorf("want false, but returned true")
+	}
+	if ValidateOrder(a, vt) == false {
+		t.Errorf("want true, but returned false")
+	}
+}
