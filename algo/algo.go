@@ -1,3 +1,4 @@
+// algo : my algorithm library
 package algo
 
 // Permutations : 入力配列の順列（配列を並び替えてできる配列の群）をすべて求める

@@ -6,15 +6,5 @@ my Golang library
 
 ## functions list
 
-### runes
-
-control `[]rune` strings
-
-[[runes]]
-
-### algo
-
-algorithm
-
-[[algo]]
+[[functions]]
 

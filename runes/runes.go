@@ -1,3 +1,4 @@
+// runes : control []rune strings
 package runes
 
 // Index : 最初に現れる文字の位置を返す
