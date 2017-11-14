@@ -9,7 +9,7 @@ find . -type f -name '*.go' -not -name '*_test.go' | while read line; do
 
     echo -e '### '$n'\n' >>$temp
     grep -B10 -e '^package' < $line | \
-        grep -e '^//' --color=no | sed -e 's|^// ||' >>$temp
+        grep -e '^//' --color=no | sed -e 's|^// Package '$n' : ||' >>$temp
     echo "" >>$temp
 
     grep -ho 'func\s[A-Z].*{' < $line | \

@@ -1,6 +1,9 @@
 package algo
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func permutationsF(a []int) int {
 	return a[0]*100 + a[1]*10 + a[2]
@@ -98,4 +101,22 @@ func TestValidateOrder(t *testing.T) {
 	if ValidateOrder(a, vt) == false {
 		t.Errorf("want true, but returned false")
 	}
+}
+
+func sliceAdderT(t *testing.T, s []int, n []int, expected []int, expectedf int) {
+	actual, actualf := SliceAdder(s, n, len(s))
+	if reflect.DeepEqual(expected, actual) == false {
+		t.Errorf("want slice %v, but returned %v", expected, actual)
+	}
+	if expectedf != actualf {
+		t.Errorf("want flag %v, but returned %v", expectedf, actualf)
+	}
+}
+
+func TestSliceAdder(t *testing.T) {
+	sliceAdderT(t, []int{2, 4, 8, 1}, []int{4, 6, 12, 6}, []int{3, 4, 8, 1}, 0)
+	sliceAdderT(t, []int{3, 4, 8, 1}, []int{4, 6, 12, 6}, []int{0, 5, 8, 1}, 1)
+	sliceAdderT(t, []int{0, 5, 8, 1}, []int{4, 6, 12, 6}, []int{1, 5, 8, 1}, 0)
+	sliceAdderT(t, []int{7, 5, 12, 5}, []int{4, 6, 12, 6}, []int{0, 0, 0, 0}, 3)
+	sliceAdderT(t, []int{15, 1, 2, 3}, []int{4, 6, 12, 6}, []int{0, 2, 2, 3}, 1)
 }

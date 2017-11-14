@@ -9,17 +9,18 @@ my Golang library
 
 ### algo
 
-algo : my algorithm library
+my algorithm library
 
     func Contains(s []int, t int) bool 
     func Permutations(a []int) [][]int 
     func Reverse(a []int) 
     func ReverseCopy(a []int) []int 
+    func SliceAdder(s []int, n []int, l int) ([]int, int) 
     func ValidateOrder(a []int, v [][]int) bool 
 
 ### runes
 
-runes : control []rune strings
+control []rune strings
 
     func Compare(a []rune, b []rune) bool 
     func Index(s []rune, str []rune, start int) int 

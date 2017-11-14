@@ -1,4 +1,4 @@
-// runes : control []rune strings
+// Package runes : control []rune strings
 package runes
 
 // Index : 最初に現れる文字の位置を返す
@@ -26,7 +26,7 @@ func Index(s []rune, str []rune, start int) int {
 	}
 	for ; i < len(s) && p < len(str); i++ {
 		if s[i] == str[p] {
-			p += 1
+			p++
 			if p >= len(str) {
 				return i - len(str) + 1
 			}

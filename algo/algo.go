@@ -1,4 +1,4 @@
-// algo : my algorithm library
+// Package algo : my algorithm library
 package algo
 
 // Permutations : 入力配列の順列（配列を並び替えてできる配列の群）をすべて求める
@@ -37,7 +37,7 @@ func Reverse(a []int) {
 	}
 }
 
-// Reverse : 配列を逆順に並び替えて，そのコピーを返す．
+// ReverseCopy : 配列を逆順に並び替えて，そのコピーを返す．
 // a : 配列（スライス）．変更されない
 // return : 逆順になった配列
 func ReverseCopy(a []int) []int {
@@ -84,4 +84,38 @@ func Contains(s []int, t int) bool {
 		}
 	}
 	return false
+}
+
+// SliceAdder : スライスをn進数として桁上がり可能な加算器（nは要素ごとに異なる）
+// s: 配列
+// n: 要素の進数を示す値が含まれた配列
+// l: 配列の要素数
+// return: 1つ加算したs,
+// 検知ビット(1: 桁上がり, 3: オーバーフロー)
+// s = [2 4 8 1], n =  [4 6 12 6]のとき，
+// SliceAdder(s, n)とすると[3 4 8 1]が返るが，
+// SliceAdder([3 4 8 1], [4 6 12 6])とすると[0 5 8 1]が返る
+func SliceAdder(s []int, n []int, l int) ([]int, int) {
+	if s[0] >= n[0]-1 {
+		// 桁上がり
+		if len(s) == 1 {
+			// 最上位桁であって，これ以上桁上がりできない
+			return []int{0}, 3
+		}
+		r, f := SliceAdder(s[1:], n[1:], l)
+		ret := make([]int, 1, l)
+		ret[0] = 0
+		ret = append(ret, r...)
+		return ret, f
+	}
+	ret := make([]int, len(s))
+	copy(ret, s)
+	ret[0]++
+	var f int
+	if l == len(s) {
+		f = 0
+	} else {
+		f = 1
+	}
+	return ret, f
 }
