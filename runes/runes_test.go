@@ -50,6 +50,6 @@ func TestJoin(t *testing.T) {
 	expected := []rune("abcde-fghij")
 	actual := Join(in, []rune("-"))
 	if !Compare(actual, expected) {
-		t.Errorf("Join(%s, -): want %s, but returned %s", in, string(expected), string(actual))
+		t.Errorf("Join(%v, -): want %v, but returned %v", in, string(expected), string(actual))
 	}
 }
