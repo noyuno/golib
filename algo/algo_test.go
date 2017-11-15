@@ -106,10 +106,10 @@ func TestValidateOrder(t *testing.T) {
 func sliceAdderT(t *testing.T, s []int, n []int, expected []int, expectedf int) {
 	actual, actualf := SliceAdder(s, n, len(s))
 	if reflect.DeepEqual(expected, actual) == false {
-		t.Errorf("want slice %v, but returned %v", expected, actual)
+		t.Errorf("%v %v want slice %v, but returned %v", s, n, expected, actual)
 	}
 	if expectedf != actualf {
-		t.Errorf("want flag %v, but returned %v", expectedf, actualf)
+		t.Errorf("%v %v want flag %v, but returned %v", s, n, expectedf, actualf)
 	}
 }
 
@@ -119,4 +119,6 @@ func TestSliceAdder(t *testing.T) {
 	sliceAdderT(t, []int{0, 5, 8, 1}, []int{4, 6, 12, 6}, []int{1, 5, 8, 1}, 0)
 	sliceAdderT(t, []int{7, 5, 12, 5}, []int{4, 6, 12, 6}, []int{0, 0, 0, 0}, 3)
 	sliceAdderT(t, []int{15, 1, 2, 3}, []int{4, 6, 12, 6}, []int{0, 2, 2, 3}, 1)
+	sliceAdderT(t, []int{9, 5, 0, 3}, []int{10, 10, 10, 10}, []int{0, 6, 0, 3}, 1)
+	sliceAdderT(t, []int{0, 5, 0, 3}, []int{0, 5, 2, 6}, []int{0, 0, 1, 3}, 1)
 }
