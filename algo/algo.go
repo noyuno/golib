@@ -86,6 +86,9 @@ func Contains(s []int, t int) bool {
 	return false
 }
 
+const Overflow = 3
+const Carry = 1
+
 // SliceAdder : スライスをn進数として桁上がり可能な加算器（nは要素ごとに異なる）
 // s: 配列
 // n: 要素の進数を示す値が含まれた配列
@@ -100,7 +103,7 @@ func SliceAdder(s []int, n []int, l int) ([]int, int) {
 		// 桁上がり
 		if len(s) == 1 {
 			// 最上位桁であって，これ以上桁上がりできない
-			return []int{0}, 3
+			return []int{0}, Overflow
 		}
 		r, f := SliceAdder(s[1:], n[1:], l)
 		ret := make([]int, 1, l)
@@ -115,7 +118,7 @@ func SliceAdder(s []int, n []int, l int) ([]int, int) {
 	if l == len(s) {
 		f = 0
 	} else {
-		f = 1
+		f = Carry
 	}
 	return ret, f
 }
