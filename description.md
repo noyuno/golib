@@ -2,9 +2,13 @@
 
 [![Build Status](https://travis-ci.org/noyuno/lgo.svg?branch=master)](https://travis-ci.org/noyuno/lgo)
 
-my Golang library
+My Golang library
 
-## functions list
+## Functions list
 
 [[functions]]
+
+## Make readme
+
+    ./make-readme.sh
 
