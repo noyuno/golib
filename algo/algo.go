@@ -86,7 +86,10 @@ func Contains(s []int, t int) bool {
 	return false
 }
 
+// Overflow : オーバーフロー
 const Overflow = 3
+
+// Carry : 桁上がり
 const Carry = 1
 
 // SliceAdder : スライスをn進数として桁上がり可能な加算器（nは要素ごとに異なる）
