@@ -3,7 +3,7 @@
 temp=/tmp/make-readme
 echo "" >$temp
 
-find . -type f -name '*.go' -not -name '*_test.go' | while read line; do
+find . -type f -name '*.go' -not -name '*_test.go' | sort | while read line; do
     f=${line##*/}
     n=${f%.*}
 
