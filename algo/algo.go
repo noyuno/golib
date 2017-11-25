@@ -125,3 +125,8 @@ func SliceAdder(s []int, n []int, l int) ([]int, int) {
 	}
 	return ret, f
 }
+
+func SliceAdderR(s []int, n []int, l int) ([]int, int) {
+	ret, flag := SliceAdder(ReverseCopy(s), ReverseCopy(n), l)
+	return ReverseCopy(ret), flag
+}

@@ -18,6 +18,7 @@ my algorithm library
     func Reverse(a []int) 
     func ReverseCopy(a []int) []int 
     func SliceAdder(s []int, n []int, l int) ([]int, int) 
+    func SliceAdderR(s []int, n []int, l int) ([]int, int) 
     func ValidateOrder(a []int, v [][]int) bool 
 
 ### color

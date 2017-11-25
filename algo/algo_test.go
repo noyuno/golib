@@ -122,3 +122,17 @@ func TestSliceAdder(t *testing.T) {
 	sliceAdderT(t, []int{9, 5, 0, 3}, []int{10, 10, 10, 10}, []int{0, 6, 0, 3}, 1)
 	sliceAdderT(t, []int{0, 5, 0, 3}, []int{0, 5, 2, 6}, []int{0, 0, 1, 3}, 1)
 }
+
+func sliceAdderRT(t *testing.T, s []int, n []int, expected []int, expectedf int) {
+	actual, actualf := SliceAdderR(s, n, len(s))
+	if reflect.DeepEqual(expected, actual) == false {
+		t.Errorf("%v %v want slice %v, but returned %v", s, n, expected, actual)
+	}
+	if expectedf != actualf {
+		t.Errorf("%v %v want flag %v, but returned %v", s, n, expectedf, actualf)
+	}
+}
+
+func TestSliceAdderR(t *testing.T) {
+	sliceAdderRT(t, []int{2, 4, 7}, []int{4, 4, 4}, []int{3, 0, 0}, 1)
+}
