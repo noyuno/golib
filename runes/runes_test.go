@@ -62,3 +62,18 @@ func TestCopy(t *testing.T) {
 		t.Errorf("Copy(%v): want %v, but returned %v", in, string(expected), string(actual))
 	}
 }
+
+func TestCopyArray(t *testing.T) {
+	in := [][]rune{
+		[]rune("こんにちは"),
+		[]rune("さようなら"),
+	}
+	expected := [][]rune{
+		[]rune("こんにちは"),
+		[]rune("さようなら"),
+	}
+	actual := CopyArray(in)
+	if !Compare(actual[0], expected[0]) || !Compare(actual[1], expected[1]) {
+		t.Errorf("CopyArray(%v): failure")
+	}
+}

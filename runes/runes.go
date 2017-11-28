@@ -124,3 +124,11 @@ func Copy(s []rune) []rune {
 	copy(r, s)
 	return r
 }
+
+func CopyArray(s [][]rune) [][]rune {
+	r := make([][]rune, len(s))
+	for i := range s {
+		r[i] = Copy(s[i])
+	}
+	return r
+}
