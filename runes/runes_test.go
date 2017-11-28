@@ -53,3 +53,12 @@ func TestJoin(t *testing.T) {
 		t.Errorf("Join(%v, -): want %v, but returned %v", in, string(expected), string(actual))
 	}
 }
+
+func TestCopy(t *testing.T) {
+	in := []rune("こんにちは")
+	expected := []rune("こんにちは")
+	actual := Copy(in)
+	if !Compare(actual, expected) {
+		t.Errorf("Copy(%v): want %v, but returned %v", in, string(expected), string(actual))
+	}
+}

@@ -118,3 +118,9 @@ func Join(s [][]rune, sep []rune) []rune {
 	ret = append(ret, s[i]...)
 	return ret
 }
+
+func Copy(s []rune) []rune {
+	r := make([]rune, len(s))
+	copy(r, s)
+	return r
+}

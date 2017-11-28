@@ -50,6 +50,7 @@ my algorithm library
 control []rune strings
 
     func Compare(a []rune, b []rune) bool 
+    func Copy(s []rune) []rune 
     func Index(s []rune, str []rune, start int) int 
     func Join(s [][]rune, sep []rune) []rune 
     func Split(s []rune, sep []rune) [][]rune 
