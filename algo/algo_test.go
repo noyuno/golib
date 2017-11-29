@@ -10,7 +10,16 @@ func permutationsF(a []int) int {
 }
 
 func permutationsT(in []int, expected [][]int, t *testing.T) {
+	mt := make([]int, len(in))
+	copy(mt, in)
 	actual := Permutations(in)
+
+	// inが書き換わっていないか確認
+	for i := range in {
+		if in[i] != mt[i] {
+			t.Errorf("array in has been rewritten by Permutations")
+		}
+	}
 
 	if len(expected) != len(actual) {
 		t.Errorf("array size mismatch. want %v, but returned %v",

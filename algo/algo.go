@@ -7,6 +7,8 @@ package algo
 func Permutations(a []int) [][]int {
 	var recurse func([]int, int)
 	ret := [][]int{}
+	m := make([]int, len(a))
+	copy(m, a)
 
 	recurse = func(a []int, n int) {
 		if n == 1 {
@@ -24,7 +26,7 @@ func Permutations(a []int) [][]int {
 			}
 		}
 	}
-	recurse(a, len(a))
+	recurse(m, len(m))
 	return ret
 }
 
