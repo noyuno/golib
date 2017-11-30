@@ -74,6 +74,6 @@ func TestCopyArray(t *testing.T) {
 	}
 	actual := CopyArray(in)
 	if !Compare(actual[0], expected[0]) || !Compare(actual[1], expected[1]) {
-		t.Errorf("CopyArray(%v): failure")
+		t.Errorf("CopyArray: failure")
 	}
 }
