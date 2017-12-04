@@ -21,19 +21,21 @@ func permutationsT(in []int, expected [][]int, t *testing.T) {
 		}
 	}
 
-	if len(expected) != len(actual) {
-		t.Errorf("array size mismatch. want %v, but returned %v",
-			len(expected), len(actual))
-	}
 	m := map[int][]int{}
 	for i := 0; i < len(expected); i++ {
 		m[permutationsF(expected[i])] = expected[i]
 	}
-	for i := 0; i < len(actual); i++ {
-		_, ok := m[permutationsF(actual[i])]
+	k := 0
+	for i := range actual {
+		_, ok := m[permutationsF(i)]
+		k++
 		if !ok {
 			t.Errorf("unknown array")
 		}
+	}
+	if len(expected) != k {
+		t.Errorf("array size mismatch. want %v, but returned %v",
+			len(expected), k)
 	}
 }
 

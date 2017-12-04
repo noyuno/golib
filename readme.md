@@ -14,7 +14,7 @@ my algorithm library
     const Carry = 1
     const Overflow = 3
     func Contains(s []int, t int) bool 
-    func Permutations(a []int) [][]int 
+    func Permutations(data []int) <-chan []int 
     func Reverse(a []int) 
     func ReverseCopy(a []int) []int 
     func SliceAdder(s []int, n []int, l int) ([]int, int) 
@@ -51,6 +51,7 @@ control []rune strings
 
     func Compare(a []rune, b []rune) bool 
     func Copy(s []rune) []rune 
+    func CopyArray(s [][]rune) [][]rune 
     func Index(s []rune, str []rune, start int) int 
     func Join(s [][]rune, sep []rune) []rune 
     func Split(s []rune, sep []rune) [][]rune 

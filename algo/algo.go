@@ -4,30 +4,42 @@ package algo
 // Permutations : 入力配列の順列（配列を並び替えてできる配列の群）をすべて求める
 // a : 配列
 // return : 順列
-func Permutations(a []int) [][]int {
-	var recurse func([]int, int)
-	ret := [][]int{}
-	m := make([]int, len(a))
-	copy(m, a)
+func Permutations(data []int) <-chan []int {
+	c := make(chan []int)
+	go func(c chan []int) {
+		defer close(c)
+		permutate(c, data)
+	}(c)
+	return c
+}
 
-	recurse = func(a []int, n int) {
-		if n == 1 {
-			t := make([]int, len(a))
-			copy(t, a)
-			ret = append(ret, t)
-		} else {
-			for i := 0; i < n; i++ {
-				recurse(a, n-1)
-				if n%2 == 1 {
-					a[i], a[n-1] = a[n-1], a[i]
-				} else {
-					a[0], a[n-1] = a[n-1], a[0]
-				}
-			}
+// http://www.quickperm.org/ の実装
+func permutate(c chan []int, inputs []int) {
+	output := make([]int, len(inputs))
+	copy(output, inputs)
+	c <- output
+
+	size := len(inputs)
+	p := make([]int, size+1)
+	for i := 0; i < size+1; i++ {
+		p[i] = i
+	}
+	for i := 1; i < size; {
+		p[i]--
+		j := 0
+		if i%2 == 1 {
+			j = p[i]
+		}
+		tmp := inputs[j]
+		inputs[j] = inputs[i]
+		inputs[i] = tmp
+		output := make([]int, len(inputs))
+		copy(output, inputs)
+		c <- output
+		for i = 1; p[i] == 0; i++ {
+			p[i] = i
 		}
 	}
-	recurse(m, len(m))
-	return ret
 }
 
 // Reverse : 配列を逆順に並び替える
