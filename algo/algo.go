@@ -5,10 +5,12 @@ package algo
 // a : 配列
 // return : 順列
 func Permutations(data []int) <-chan []int {
+	nd := make([]int, len(data))
+	copy(nd, data)
 	c := make(chan []int)
 	go func(c chan []int) {
 		defer close(c)
-		permutate(c, data)
+		permutate(c, nd)
 	}(c)
 	return c
 }
