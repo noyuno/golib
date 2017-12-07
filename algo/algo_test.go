@@ -60,6 +60,47 @@ func TestPermutations(t *testing.T) {
 	permutationsT(in2, expected2, t)
 }
 
+func TestCombinations(t *testing.T) {
+	inactual := [][]int{
+		[]int{0, 1, 2},
+		[]int{3},
+		[]int{4, 5, 6, 7, 8},
+	}
+	in := make([][]int, len(inactual))
+	for i := range inactual {
+		in[i] = make([]int, len(inactual[i]))
+		copy(in[i], inactual[i])
+	}
+	expected := [][]int{
+		[]int{0, 3, 4},
+		[]int{0, 3, 5},
+		[]int{0, 3, 6},
+		[]int{0, 3, 7},
+		[]int{0, 3, 8},
+		[]int{1, 3, 4},
+		[]int{1, 3, 5},
+		[]int{1, 3, 6},
+		[]int{1, 3, 7},
+		[]int{1, 3, 8},
+		[]int{2, 3, 4},
+		[]int{2, 3, 5},
+		[]int{2, 3, 6},
+		[]int{2, 3, 7},
+		[]int{2, 3, 8},
+	}
+	actual := make([][]int, 0)
+	for v := range Combinations(in) {
+		actual = append(actual, v)
+	}
+	// 書き換え確認
+	if reflect.DeepEqual(in, inactual) == false {
+		t.Errorf("input argument changed")
+	}
+	if reflect.DeepEqual(expected, actual) == false {
+		t.Errorf("returned wrong value")
+	}
+}
+
 func TestReverse(t *testing.T) {
 	in := []int{1, 2, 3}
 	expected := []int{3, 2, 1}

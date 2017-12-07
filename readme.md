@@ -13,6 +13,7 @@ my algorithm library
 
     const Carry = 1
     const Overflow = 3
+    func Combinations(data [][]int) <-chan []int 
     func Contains(s []int, t int) bool 
     func Permutations(data []int) <-chan []int 
     func Reverse(a []int) 

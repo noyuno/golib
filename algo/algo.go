@@ -44,6 +44,28 @@ func permutate(c chan []int, inputs []int) {
 	}
 }
 
+func Combinations(data [][]int) <-chan []int {
+	c := make(chan []int)
+	go func(c chan []int) {
+		defer close(c)
+		pos := make([]int, len(data))
+		max := make([]int, len(data))
+		f := 0
+		for i := range data {
+			max[i] = len(data[i])
+		}
+		for f != 3 {
+			out := make([]int, len(data))
+			for k := range out {
+				out[k] = data[k][pos[k]]
+			}
+			c <- out
+			pos, f = SliceAdderR(pos, max, len(out))
+		}
+	}(c)
+	return c
+}
+
 // Reverse : 配列を逆順に並び替える
 // a : 配列（スライス）．変更される．
 func Reverse(a []int) {
