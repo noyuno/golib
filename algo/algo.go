@@ -165,6 +165,25 @@ func SliceAdder(s []int, n []int, l int) ([]int, int) {
 }
 
 func SliceAdderR(s []int, n []int, l int) ([]int, int) {
-	ret, flag := SliceAdder(ReverseCopy(s), ReverseCopy(n), l)
-	return ReverseCopy(ret), flag
+	pos := len(s) - 1
+	if s[pos] >= n[pos]-1 {
+		// 桁上がり
+		if len(s) == 1 {
+			// 最上位桁であって，これ以上桁上がりできない
+			return []int{0}, Overflow
+		}
+		r, f := SliceAdderR(s[:pos], n[:pos], l)
+		r = append(r, 0)
+		return r, f
+	}
+	ret := make([]int, len(s))
+	copy(ret, s)
+	ret[pos]++
+	var f int
+	if l == len(s) {
+		f = 0
+	} else {
+		f = Carry
+	}
+	return ret, f
 }

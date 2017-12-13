@@ -187,4 +187,6 @@ func sliceAdderRT(t *testing.T, s []int, n []int, expected []int, expectedf int)
 
 func TestSliceAdderR(t *testing.T) {
 	sliceAdderRT(t, []int{2, 4, 7}, []int{4, 4, 4}, []int{3, 0, 0}, 1)
+	sliceAdderRT(t, []int{5, 12, 5, 7}, []int{6, 12, 6, 4}, []int{0, 0, 0, 0}, 3)
+	sliceAdderRT(t, []int{3, 2, 1, 15}, []int{6, 12, 6, 4}, []int{3, 2, 2, 0}, 1)
 }
