@@ -23,6 +23,8 @@ const BGray = "\x1b[48m"
 
 const Reset = "\x1b[m"
 
+const ClearLine = "\x1b[1K"
+
 func F(n int) string {
 	return fmt.Sprintf("\x1b[38;05;%vm", n)
 }

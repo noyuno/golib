@@ -34,6 +34,7 @@ my algorithm library
     const BRed = "\x1b[41m"
     const BWhite = "\x1b[47m"
     const BYellow = "\x1b[43m"
+    const ClearLine = "\x1b[1K"
     const FBlue = "\x1b[34m"
     const FGray = "\x1b[38m"
     const FGreen = "\x1b[32m"
